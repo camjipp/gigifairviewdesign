@@ -1,0 +1,82 @@
+---
+interface Props {
+  aboutImage1: string;
+  aboutImage2: string;
+}
+
+const { aboutImage1, aboutImage2 } = Astro.props;
+---
+
+<section id="about" class="max-w-7xl mx-auto px-6 py-16 text-center">
+  <h2 class="text-5xl font-light text-[#1a1a1a] mb-12">About Gigi Fairview Design</h2>
+
+  <div class="space-y-16 max-w-5xl mx-auto">
+    <!-- First Row: Text Left, Image Right -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-center">
+      <p class="about-text-block text-lg text-gray-700 leading-relaxed text-left opacity-0 translate-x-[-20px] transition-all duration-700 ease-out font-pt-mono">
+        Gigi Fairview Design is proud to offer furniture crafted in Juarez, Mexico. Our curated selection includes exceptional outdoor furniture, Sunbrella fabrics, umbrellas, pillows, poufs, planters, and other exquisite accessories, all designed to elevate your outdoor living spaces.
+      </p>
+      <div class="about-image-block relative h-80 md:h-[400px] overflow-hidden opacity-0 translate-x-[20px] transition-all duration-700 ease-out">
+        <img
+          src={aboutImage1}
+          alt="Gigi Fairview Design Image 1"
+          class="absolute inset-0 w-full h-full object-cover"
+          style="image-rendering: -webkit-optimize-contrast;"
+        />
+      </div>
+    </div>
+
+    <!-- Second Row: Image Left, Text Right -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-center">
+      <div class="about-image-block relative h-80 md:h-[400px] overflow-hidden opacity-0 translate-x-[-20px] transition-all duration-700 ease-out md:order-1">
+        <img
+          src={aboutImage2}
+          alt="Gigi Fairview Design Image 2"
+          class="absolute inset-0 w-full h-full object-cover"
+          style="image-rendering: -webkit-optimize-contrast;"
+        />
+      </div>
+      <div id="services-section" class="about-text-block text-left opacity-0 translate-x-[20px] transition-all duration-700 ease-out md:order-2 font-pt-mono">
+        <h3 class="text-2xl font-semibold text-[#1a1a1a] mb-4">Our Services</h3>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Professional and ASID licensed design</li>
+          <li>Meticulous space planning with advanced 2D/3D software</li>
+          <li>Seamless white-glove installation with removal of all packing material</li>
+          <li>Timely delivery, with average ordering times of 6-10 weeks</li>
+          <li>Service where 'se habla español' for our valued clientele</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-text-block.active,
+  .about-image-block.active {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5 // Trigger when 50% of the element is in view
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // observer.unobserve(entry.target); // Optional: stop observing once animated
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.about-text-block, .about-image-block').forEach(block => {
+      observer.observe(block);
+    });
+  });
+</script>

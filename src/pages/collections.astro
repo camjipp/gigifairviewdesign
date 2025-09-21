@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+type Item = {
+  vendor: "Brown Jordan" | "Tropitone";
+  collection: string;
+  src: string; // use placeholder for now
+  alt: string;
+};
+
+export const items: Item[] = [
+  // Brown Jordan (placeholders)
+  { vendor: "Brown Jordan", collection: "Adapt", src: "/images/placeholders/bj_adapt.png", alt: "Adapt dining by pool" },
+  { vendor: "Brown Jordan", collection: "Atlas", src: "/images/placeholders/bj_atlas.png", alt: "Atlas dining with mountains" },
+  { vendor: "Brown Jordan", collection: "Faro", src: "/images/placeholders/bj_faro.png", alt: "Faro dining and house" },
+  { vendor: "Brown Jordan", collection: "Fremont", src: "/images/placeholders/bj_fremont.png", alt: "Fremont patio ocean mist" },
+  { vendor: "Brown Jordan", collection: "Fusion", src: "/images/placeholders/bj_fusion.png", alt: "Fusion pub-height table (vine)" },
+  { vendor: "Brown Jordan", collection: "Fusion", src: "/images/placeholders/bj_fusion2.png", alt: "Fusion pub-height table (rock wall)" },
+  { vendor: "Brown Jordan", collection: "H", src: "/images/placeholders/bj_H.png", alt: "H rope chair" },
+  { vendor: "Brown Jordan", collection: "Huntley", src: "/images/placeholders/bj_huntley.png", alt: "Huntley indoor/outdoor patio" },
+  { vendor: "Brown Jordan", collection: "Moto", src: "/images/placeholders/bj_moto.png", alt: "Moto sectional with wood wall" },
+  { vendor: "Brown Jordan", collection: "Softscape", src: "/images/placeholders/bj_softscape.png", alt: "Softscape seating and ocean" },
+  { vendor: "Brown Jordan", collection: "Sol y Luna", src: "/images/placeholders/bj_solyluna.png", alt: "Sol y Luna dining and pool" },
+  { vendor: "Brown Jordan", collection: "Still", src: "/images/placeholders/bj_still.png", alt: "Still blue pub-height table" },
+  { vendor: "Brown Jordan", collection: "Stretch", src: "/images/placeholders/bj_stretch.png", alt: "Stretch seating and wood wall" },
+  { vendor: "Brown Jordan", collection: "Swim", src: "/images/placeholders/bj_swim.png", alt: "Swim dining and mountains" },
+  { vendor: "Brown Jordan", collection: "Swim", src: "/images/placeholders/bj_swim2.png", alt: "Swim dining and pool" },
+
+  // Tropitone (placeholders)
+  { vendor: "Tropitone", collection: "Contour", src: "/images/placeholders/tr_contour.png", alt: "Contour ocean" },
+  { vendor: "Tropitone", collection: "Evo", src: "/images/placeholders/tr_evo.png", alt: "Evo pool" },
+  { vendor: "Tropitone", collection: "Oasis", src: "/images/placeholders/tr_oasis.png", alt: "Oasis cactus" },
+  { vendor: "Tropitone", collection: "LaScala", src: "/images/placeholders/tr_lascala.png", alt: "LaScala ocean" },
+  { vendor: "Tropitone", collection: "South Beach", src: "/images/placeholders/tr_southbeach.png", alt: "South Beach pool & mountains" },
+  { vendor: "Tropitone", collection: "Radius", src: "/images/placeholders/tr_radius.png", alt: "Radius mountains & ocean" },
+];
+
+const vendors = ["All", "Brown Jordan", "Tropitone"] as const;
+const active = Astro.url.searchParams.get("vendor") ?? "All";
+const displayItems = active === "All" ? items : items.filter(i => i.vendor === active);
+---
+
+<Layout title="Collections — Gigi FairView Design">
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+      <div>
+        <h1 class="text-6xl font-light text-[#1a1a1a]">Collections</h1>
+        <p class="text-lg font-pt-mono text-[#1a1a1a] mt-4 max-w-2xl">Curated outdoor furniture, fabrics, and accessories for Baja Sur & beyond, selected to elevate your outdoor living spaces.</p>
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {active === "All" ? (
+        <>
+          <h2 class="text-4xl font-light col-span-full mt-16 mb-2 text-[#1a1a1a]">Brown Jordan</h2>
+          <p class="col-span-full text-lg font-pt-mono text-[#1a1a1a] mb-6">Manufacturing exceptional outdoor furniture since 1945, combining innovative design with superior craftsmanship.</p>
+          {items.filter(i => i.vendor === "Brown Jordan").map((it) => (
+            <figure class="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative h-full">
+              <img src={it.src} alt={it.alt} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 text-center">
+                <p class="text-sm text-gray-200 tracking-wide uppercase mb-1">{it.vendor}</p>
+                <p class="text-xl font-semibold text-white mb-4">{it.collection}</p>
+                <a class="border border-white text-white px-4 py-2 rounded-md hover:bg-white hover:text-black transition-all duration-300" href={it.vendor === "Brown Jordan" ? "https://www.brownjordan.com/lookbooks_catalog-2025" : "https://www.tropitone.com/catalogs"} target="_blank" rel="noopener">View Catalog &rarr;</a>
+              </div>
+            </figure>
+          ))}
+          <h2 class="text-4xl font-light col-span-full mt-16 mb-2 text-[#1a1a1a]">Tropitone</h2>
+          <p class="col-span-full text-lg font-pt-mono text-[#1a1a1a] mb-6">Specializing in residential and commercial outdoor furniture, renowned for their comfort, style, and durability.</p>
+          {items.filter(i => i.vendor === "Tropitone").map((it) => (
+            <figure class="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative h-full">
+              <img src={it.src} alt={it.alt} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 text-center">
+                <p class="text-sm text-gray-200 tracking-wide uppercase mb-1">{it.vendor}</p>
+                <p class="text-xl font-semibold text-white mb-4">{it.collection}</p>
+                <a class="border border-white text-white px-4 py-2 rounded-md hover:bg-white hover:text-black transition-all duration-300" href={it.vendor === "Brown Jordan" ? "https://www.brownjordan.com/lookbooks_catalog-2025" : "https://www.tropitone.com/catalogs"} target="_blank" rel="noopener">View Catalog &rarr;</a>
+              </div>
+            </figure>
+          ))}
+        </>
+      ) : (
+        displayItems.map((it) => (
+          <figure class="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative h-full">
+            <img src={it.src} alt={it.alt} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 text-center">
+              <p class="text-sm text-gray-200 tracking-wide uppercase mb-1">{it.vendor}</p>
+              <p class="text-xl font-semibold text-white mb-4">{it.collection}</p>
+              <a class="border border-white text-white px-4 py-2 rounded-md hover:bg-white hover:text-black transition-all duration-300" href={it.vendor === "Brown Jordan" ? "https://www.brownjordan.com/lookbooks_catalog-2025" : "https://www.tropitone.com/catalogs"} target="_blank" rel="noopener">View Catalog &rarr;</a>
+            </div>
+          </figure>
+        ))
+      )}
+    </div>
+  </section>
+</Layout>

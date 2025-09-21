@@ -1,0 +1,57 @@
+---
+import { useState } from 'astro/jsx-runtime';
+
+interface Props {
+  links: { href: string; label: string }[];
+}
+
+const { links } = Astro.props;
+---
+
+<div class="md:hidden">
+  <button id="hamburger-button" class="focus:outline-none">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+
+  <div id="mobile-menu" class="fixed inset-0 bg-black/80 backdrop-blur-lg hidden z-40">
+    <div class="flex flex-col items-center justify-center h-full">
+      <ul class="flex flex-col items-center gap-8 text-white">
+        {links.map(l => <li><a class="text-2xl font-semibold hover:text-[var(--color-accent-blue)] transition-colors duration-300" href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerButton = document.getElementById('hamburger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+ 
+    hamburgerButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+ 
+      // Toggle hamburger icon
+      if (mobileMenu.classList.contains('hidden')) {
+        hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
+      } else {
+        hamburgerIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // Close icon
+      }
+    });
+ 
+    // Close menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Reset to hamburger icon
+      });
+    });
+  });
+
+</script>
+
+<style>
+  /* Add any specific styles for the hamburger menu here if needed */
+</style>

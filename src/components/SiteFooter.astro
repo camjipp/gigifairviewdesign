@@ -1,0 +1,29 @@
+---
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/collections", label: "Collections" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/reviews", label: "Reviews" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<footer class="bg-black text-white py-16">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
+    <div class="text-center md:text-left">
+      <p class="text-2xl font-bold tracking-tight">GigiFairView Design</p>
+      <p class="text-sm text-gray-400 mt-2">&copy; {new Date().getFullYear()} All rights reserved.</p>
+    </div>
+
+    <nav>
+      <ul class="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-4 text-base">
+        {links.map((l: { href: string; label: string }) => (
+          <li>
+            <a class="hover:text-gray-300 transition-colors duration-300" href={l.href}>{l.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</footer>

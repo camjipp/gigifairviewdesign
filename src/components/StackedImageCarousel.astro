@@ -1,0 +1,120 @@
+---
+interface Props {
+  images: { src: string; alt: string }[];
+}
+
+const { images } = Astro.props;
+
+const id = `stacked-carousel-${Math.random().toString(36).substr(2, 9)}`;
+
+const initialImageWidth = 300; // Assuming current images are roughly 600px wide, 1/2 would be 300px
+const initialImageHeight = 200; // Maintain aspect ratio if needed, or adjust as per content
+---
+
+<div id={id} class="relative flex justify-center items-center w-full" style={`height: ${initialImageHeight * 1.2}px;`}>
+  {images.map((image, index) => (
+    <img
+      src={image.src}
+      alt={image.alt}
+      class="absolute object-cover rounded-lg transition-all duration-500 ease-in-out cursor-pointer"
+      style={`
+        width: ${initialImageWidth}px;
+        height: ${initialImageHeight}px;
+        left: 50%;
+        transform: translateX(-50%) scale(0.9) translateY(0) rotateY(0deg);
+        z-index: ${images.length - index};
+      `}
+      data-index={index}
+    />
+  ))}
+
+  <!-- Navigation Arrows -->
+  <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 z-50" aria-label="Previous Image" data-direction="prev">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+  </button>
+  <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 z-50" aria-label="Next Image" data-direction="next">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+  </button>
+</div>
+
+<script define:vars={{ id, images, initialImageWidth, initialImageHeight }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.getElementById(id);
+    if (!carousel) return;
+
+    const slides = Array.from(carousel.querySelectorAll('img'));
+    const prevButton = carousel.querySelector('[data-direction="prev"]');
+    const nextButton = carousel.querySelector('[data-direction="next"]');
+
+    let currentIndex = 0;
+
+    const updateCarousel = () => {
+      slides.forEach((slide, i) => {
+        const offset = i - currentIndex;
+        let transform = `translateX(-50%)`;
+        let zIndex = 0;
+        let scale = 1;
+        let opacity = 0.5;
+        let translateX = 0;
+        let translateY = 0;
+        let blur = 0;
+
+        if (offset === 0) { // Middle visible image
+          scale = 1.1; // Slightly larger
+          zIndex = images.length;
+          opacity = 1;
+          translateY = -10;
+          slide.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'; // Pronounced shadow
+        } else if (offset === 1 || offset === -(slides.length - 1)) { // Right peeking image
+          scale = 0.9;
+          zIndex = images.length - 1;
+          translateX = initialImageWidth * 0.1; // Much closer showing, more overlap
+          opacity = 0.8;
+          blur = 2;
+          slide.style.boxShadow = 'none';
+        } else if (offset === -1 || offset === (slides.length - 1)) { // Left peeking image
+          scale = 0.9;
+          zIndex = images.length - 1;
+          translateX = -initialImageWidth * 0.1; // Much closer showing, more overlap
+          opacity = 0.8;
+          blur = 2;
+          slide.style.boxShadow = 'none';
+        } else { // Hidden images
+          opacity = 0;
+          zIndex = 0;
+          scale = 0.8;
+          blur = 5;
+          slide.style.boxShadow = 'none';
+        }
+
+        slide.style.transform = `translateX(${translateX - 50}%) translateY(${translateY}px) scale(${scale})`;
+        slide.style.opacity = opacity;
+        slide.style.zIndex = zIndex;
+        slide.style.filter = `blur(${blur}px)`;
+
+        // Ensure the central image is always perfectly centered horizontally
+        if (offset === 0) {
+          slide.style.left = '50%';
+        } else {
+          slide.style.left = `calc(50% + ${translateX}px)`;
+        }
+
+      });
+    };
+
+    const goToNext = () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    };
+
+    const goToPrev = () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    };
+
+    prevButton.addEventListener('click', goToPrev);
+    nextButton.addEventListener('click', goToNext);
+
+    updateCarousel(); // Initial render
+  });
+</script>

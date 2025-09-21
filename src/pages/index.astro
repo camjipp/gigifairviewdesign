@@ -1,11 +1,54 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import FurnitureLines from '../components/FurnitureLines.astro';
+import About from '../components/About.astro';
+import Testimonials from '../components/Testimonials.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const allPlaceholderImages = [
+  "/images/placeholders/bj_adapt.png",
+  "/images/placeholders/bj_atlas.png",
+  "/images/placeholders/bj_faro.png",
+  "/images/placeholders/bj_fremont.png",
+  "/images/placeholders/bj_fusion.png",
+  "/images/placeholders/bj_fusion2.png",
+  "/images/placeholders/bj_H.png",
+  "/images/placeholders/bj_huntley.png",
+  "/images/placeholders/bj_moto.png",
+  "/images/placeholders/bj_softscape.png",
+  "/images/placeholders/bj_solyluna.png",
+  "/images/placeholders/bj_still.png",
+  "/images/placeholders/bj_stretch.png",
+  "/images/placeholders/bj_swim.png",
+  "/images/placeholders/bj_swim2.png",
+  "/images/placeholders/tr_contour.png",
+  "/images/placeholders/tr_evo.png",
+  "/images/placeholders/tr_lascala.png",
+  "/images/placeholders/tr_oasis.png",
+  "/images/placeholders/tr_radius.png",
+  "/images/placeholders/tr_southbeach.png",
+];
+
+function getUniqueRandomImages(count: number): string[] {
+  const shuffled = [...allPlaceholderImages].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
+
+const [furnLine1Img, furnLine2Img, aboutImg1, aboutImg2] = getUniqueRandomImages(4);
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Gigi Fairview Design">
+	<section class="relative z-20 max-w-7xl mx-auto px-6 pt-16 py-0 flex flex-col md:flex-row items-end justify-between">
+		<h1 class="text-left flex flex-col items-start font-light text-[#1a1a1a] mb-0 leading-none">
+			<span class="block text-5xl">Gigi</span>
+			<span class="block text-7xl">Fairview Design</span>
+		</h1>
+		<p class="text-base font-light text-[#1a1a1a] max-w-xs md:text-right mb-0 leading-normal flex flex-col">
+			<span>AUTHENTIC PRODUCTIONS</span>
+			<span>THAT CAPTURE THE</span>
+			<span>ESSENCE OF HAND-MADE PRODUCTS</span>
+		</p>
+	</section>
+	<FurnitureLines brownJordanImage={furnLine1Img} tropitoneImage={furnLine2Img} />
+	<About aboutImage1={aboutImg1} aboutImage2={aboutImg2} />
+	<Testimonials />
 </Layout>

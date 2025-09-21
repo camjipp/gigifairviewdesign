@@ -1,0 +1,50 @@
+---
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  brownJordanImage: string;
+  tropitoneImage: string;
+}
+
+const { brownJordanImage, tropitoneImage } = Astro.props;
+---
+
+<section id="furniture-lines" class="max-w-7xl mx-auto px-6 pt-16">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {brownJordanImage && (
+      <div class="relative h-[500px] overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+        <img
+          src={brownJordanImage}
+          alt="Brown Jordan Collection Image"
+          class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-110"
+          style="image-rendering: -webkit-optimize-contrast;"
+        />
+        <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <p class="text-sm tracking-widest uppercase mb-2">Our Collection</p>
+          <h3 class="text-4xl font-bold mb-6">Brown Jordan</h3>
+          <a href="/collections?vendor=Brown%20Jordan" class="inline-block px-8 py-4 border-2 border-white text-white text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
+            Go to the Collection
+          </a>
+        </div>
+      </div>
+    )}
+
+    {tropitoneImage && (
+      <div class="relative h-[500px] overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+        <img
+          src={tropitoneImage}
+          alt="Tropitone Collection Image"
+          class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-110"
+          style="image-rendering: -webkit-optimize-contrast;"
+        />
+        <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <p class="text-sm tracking-widest uppercase mb-2">Our Collection</p>
+          <h3 class="text-4xl font-bold mb-6">Tropitone</h3>
+          <a href="/collections?vendor=Tropitone" class="inline-block px-8 py-4 border-2 border-white text-white text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
+            Go to the Collection
+          </a>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

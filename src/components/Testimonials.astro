@@ -1,0 +1,73 @@
+---
+---
+
+<section id="testimonials" class="py-16 bg-white overflow-hidden relative">
+  <h2 class="text-5xl font-light text-[#1a1a1a] mb-12 text-center">Client Testimonials</h2>
+  <div class="flex ticker-wrap space-x-24 items-center">
+    <div class="ticker-item flex-shrink-0 flex items-center justify-center min-w-[400px] min-h-[200px] px-12 py-8">
+      <div class="text-center max-w-lg mx-auto text-gray-700 text-xl font-pt-mono leading-relaxed">
+        <p class="mb-4">"Gigi Fairview Design transformed our outdoor space into a desert oasis. Their attention to detail and curated selection is unparalleled. Truly exceptional!"</p>
+        <p class="font-medium">- Isabella M., Homeowner</p>
+      </div>
+    </div>
+    <div class="ticker-item flex-shrink-0 flex items-center justify-center min-w-[400px] min-h-[200px] px-12 py-8">
+      <div class="text-center max-w-lg mx-auto text-gray-700 text-xl font-pt-mono leading-relaxed">
+        <p class="mb-4">"The team at Gigi Fairview Design made our vision a reality. From concept to installation, the process was seamless and the results are stunning."</p>
+        <p class="font-medium">- The Smith Family, Arizona</p>
+      </div>
+    </div>
+    <div class="ticker-item flex-shrink-0 flex items-center justify-center min-w-[400px] min-h-[200px] px-12 py-8">
+      <div class="text-center max-w-lg mx-auto text-gray-700 text-xl font-pt-mono leading-relaxed">
+        <p class="mb-4">"Their design expertise and selection of outdoor furniture are second to none. We couldn't be happier with our beautiful new patio."</p>
+        <p class="font-medium">- Dr. Alex C., Santa Fe</p>
+      </div>
+    </div>
+    <div class="ticker-item flex-shrink-0 flex items-center justify-center min-w-[400px] min-h-[200px] px-12 py-8">
+      <div class="text-center max-w-lg mx-auto text-gray-700 text-xl font-pt-mono leading-relaxed">
+        <p class="mb-4">"[Placeholder for an inspiring client quote that could win awards for its impact and elegance.]"</p>
+        <p class="font-medium">- [Client Name], [Client Title/Company]</p>
+      </div>
+    </div>
+    <!-- Duplicate items to ensure continuous loop -->
+    <div class="ticker-item flex-shrink-0 flex items-center justify-center min-w-[400px] min-h-[200px] px-12 py-8">
+      <div class="text-center max-w-lg mx-auto text-gray-700 text-xl font-pt-mono leading-relaxed">
+        <p class="mb-4">"Gigi Fairview Design transformed our outdoor space into a desert oasis. Their attention to detail and curated selection is unparalleled. Truly exceptional!"</p>
+        <p class="font-medium">- Isabella M., Homeowner</p>
+      </div>
+    </div>
+    <div class="ticker-item flex-shrink-0 flex items-center justify-center min-w-[400px] min-h-[200px] px-12 py-8">
+      <div class="text-center max-w-lg mx-auto text-gray-700 text-xl font-pt-mono leading-relaxed">
+        <p class="mb-4">"The team at Gigi Fairview Design made our vision a reality. From concept to installation, the process was seamless and the results are stunning."</p>
+        <p class="font-medium">- The Smith Family, Arizona</p>
+      </div>
+    </div>
+    <div class="ticker-item flex-shrink-0 flex items-center justify-center min-w-[400px] min-h-[200px] px-12 py-8">
+      <div class="text-center max-w-lg mx-auto text-gray-700 text-xl font-pt-mono leading-relaxed">
+        <p class="mb-4">"Their design expertise and selection of outdoor furniture are second to none. We couldn't be happier with our beautiful new patio."</p>
+        <p class="font-medium">- Dr. Alex C., Santa Fe</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ticker-wrap {
+    display: flex;
+    width: fit-content;
+    animation: ticker linear infinite 60s; /* Reverted to 60s */
+    /* Removed white-space: nowrap; */
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .ticker-wrap:hover {
+    animation-play-state: paused;
+  }
+</style>
