@@ -1,16 +1,16 @@
 ---
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/collections", label: "Collections" },
+  { href: `${import.meta.env.BASE_URL}`, label: "Home" },
+  { href: `${import.meta.env.BASE_URL}collections`, label: "Collections" },
   { href: "/#about", label: "About" },
   { href: "/#testimonials", label: "Reviews" },
-  { href: "/contact", label: "Contact" },
+  { href: `${import.meta.env.BASE_URL}contact`, label: "Contact" },
 ];
 import HamburgerMenu from "./HamburgerMenu.astro";
 ---
 <nav class="w-full border-b border-gray-200 bg-white/80 fixed top-0 z-50 backdrop-blur-md">
   <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-    <a href="/" class="font-bold tracking-tight site-title text-2xl text-[#1a1a1a]">GigiFairView Design</a>
+    <a href={`${import.meta.env.BASE_URL}`} class="font-bold tracking-tight site-title text-2xl text-[#1a1a1a]">GigiFairView Design</a>
     <ul class="hidden md:flex gap-8 text-base text-[#333]">
       {links.map(l => <li><a class="font-normal hover:font-semibold transition-all duration-300 hover:text-[var(--color-accent-blue)]" href={l.href}>{l.label}</a></li>)}
     </ul>

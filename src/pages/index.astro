@@ -5,27 +5,27 @@ import About from '../components/About.astro';
 import Testimonials from '../components/Testimonials.astro';
 
 const allPlaceholderImages = [
-  "/images/placeholders/bj_adapt.png",
-  "/images/placeholders/bj_atlas.png",
-  "/images/placeholders/bj_faro.png",
-  "/images/placeholders/bj_fremont.png",
-  "/images/placeholders/bj_fusion.png",
-  "/images/placeholders/bj_fusion2.png",
-  "/images/placeholders/bj_H.png",
-  "/images/placeholders/bj_huntley.png",
-  "/images/placeholders/bj_moto.png",
-  "/images/placeholders/bj_softscape.png",
-  "/images/placeholders/bj_solyluna.png",
-  "/images/placeholders/bj_still.png",
-  "/images/placeholders/bj_stretch.png",
-  "/images/placeholders/bj_swim.png",
-  "/images/placeholders/bj_swim2.png",
-  "/images/placeholders/tr_contour.png",
-  "/images/placeholders/tr_evo.png",
-  "/images/placeholders/tr_lascala.png",
-  "/images/placeholders/tr_oasis.png",
-  "/images/placeholders/tr_radius.png",
-  "/images/placeholders/tr_southbeach.png",
+  `${import.meta.env.BASE_URL}images/placeholders/bj_adapt.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_atlas.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_faro.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_fremont.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_fusion.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_fusion2.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_H.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_huntley.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_moto.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_softscape.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_solyluna.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_still.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_stretch.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_swim.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/bj_swim2.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/tr_contour.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/tr_evo.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/tr_lascala.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/tr_oasis.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/tr_radius.png`,
+  `${import.meta.env.BASE_URL}images/placeholders/tr_southbeach.png`,
 ];
 
 function getUniqueRandomImages(count: number): string[] {
@@ -37,12 +37,12 @@ const [furnLine1Img, furnLine2Img, aboutImg1, aboutImg2] = getUniqueRandomImages
 ---
 
 <Layout title="Gigi Fairview Design">
-	<section class="relative z-20 max-w-7xl mx-auto px-6 pt-16 py-0 flex flex-col md:flex-row items-end justify-between">
+	<section class="relative z-20 max-w-7xl mx-auto px-6 pt-12 md:pt-16 py-0 flex flex-col md:flex-row items-end justify-between">
 		<h1 class="text-left flex flex-col items-start font-light text-[#1a1a1a] mb-0 leading-none">
-			<span class="block text-5xl">Gigi</span>
-			<span class="block text-7xl">Fairview Design</span>
+			<span class="block text-5xl sm:text-4xl">Gigi</span>
+			<span class="block text-7xl sm:text-6xl">Fairview Design</span>
 		</h1>
-		<p class="text-base font-light text-[#1a1a1a] max-w-xs md:text-right mb-0 leading-normal flex flex-col">
+		<p class="text-base sm:text-sm font-light text-[#1a1a1a] max-w-xs md:text-right mb-0 leading-normal flex flex-col">
 			<span>AUTHENTIC PRODUCTIONS</span>
 			<span>THAT CAPTURE THE</span>
 			<span>ESSENCE OF HAND-MADE PRODUCTS</span>
