@@ -8,7 +8,7 @@ const links = [
   { href: `${BASE_URL}contact`, label: "Contact" },
 ];
 
-const navLinks = links.map(l => `<li><a class="font-normal hover:font-semibold transition-all duration-300 hover:text-[var(--color-accent-blue)]" href="${l.href}">${l.label}</a></li>`).join('');
+const navLinks = links.map(l => `<li><a class="font-normal hover:font-semibold transition-all duration-300 hover:text-[var(--color-accent-blue)]" href='${l.href}'>${l.label}</a></li>`).join('');
 
 import HamburgerMenu from "./HamburgerMenu.astro";
 ---
