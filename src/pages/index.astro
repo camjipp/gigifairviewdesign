@@ -49,6 +49,10 @@ const [furnLine1Img, furnLine2Img, aboutImg1, aboutImg2] = getUniqueRandomImages
 		</p>
 	</section>
 	<FurnitureLines brownJordanImage={furnLine1Img} tropitoneImage={furnLine2Img} />
-	<About aboutImage1={aboutImg1} aboutImage2={aboutImg2} />
-	<Testimonials />
+	<div id="about">
+		<About aboutImage1={aboutImg1} aboutImage2={aboutImg2} />
+	</div>
+	<div id="testimonials">
+		<Testimonials />
+	</div>
 </Layout>
