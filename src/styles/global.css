@@ -3,3 +3,12 @@
 .font-pt-mono {
   font-family: 'PT Mono', monospace;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+#about,
+#testimonials {
+  scroll-margin-top: 5rem; /* offset for fixed header/banner */
+}

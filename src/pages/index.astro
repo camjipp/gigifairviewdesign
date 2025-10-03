@@ -33,7 +33,10 @@ function getUniqueRandomImages(count: number): string[] {
   return shuffled.slice(0, count);
 }
 
-const [furnLine1Img, furnLine2Img, aboutImg1, aboutImg2] = getUniqueRandomImages(4);
+const brownJordanAdaptImg = `${import.meta.env.BASE_URL}images/placeholders/bj_adapt.png`;
+const tropitoneOasisImg = `${import.meta.env.BASE_URL}images/placeholders/tr_oasis.png`;
+const arhausHomepageImg = `${import.meta.env.BASE_URL}images/placeholders/Arhaus_Livingroom.png`;
+const [aboutImg1, aboutImg2] = getUniqueRandomImages(2);
 ---
 
 <Layout title="Gigi Fairview Design">
@@ -43,12 +46,12 @@ const [furnLine1Img, furnLine2Img, aboutImg1, aboutImg2] = getUniqueRandomImages
 			<span class="block text-7xl sm:text-6xl">Fairview Design</span>
 		</h1>
 		<p class="text-base sm:text-sm font-light text-[#1a1a1a] max-w-xs md:text-right mb-0 leading-normal flex flex-col">
-			<span>AUTHENTIC PRODUCTIONS</span>
+			<span>AUTHENTIC FURNISHINGS</span>
 			<span>THAT CAPTURE THE</span>
-			<span>ESSENCE OF HAND-MADE PRODUCTS</span>
+			<span>ESSENCE OF HAND MADE PRODUCTS</span>
 		</p>
 	</section>
-	<FurnitureLines brownJordanImage={furnLine1Img} tropitoneImage={furnLine2Img} />
+	<FurnitureLines brownJordanImage={brownJordanAdaptImg} tropitoneImage={tropitoneOasisImg} arhausImage={arhausHomepageImg} />
 	<div id="about">
 		<About aboutImage1={aboutImg1} aboutImage2={aboutImg2} />
 	</div>

@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 
 type Item = {
-  vendor: "Brown Jordan" | "Tropitone";
+  vendor: "Brown Jordan" | "Tropitone" | "Arhaus";
   collection: string;
   src: string; // use placeholder for now
   alt: string;
@@ -33,9 +33,14 @@ export const items: Item[] = [
   { vendor: "Tropitone", collection: "LaScala", src: `${import.meta.env.BASE_URL}images/placeholders/tr_lascala.png`, alt: "LaScala ocean" },
   { vendor: "Tropitone", collection: "South Beach", src: `${import.meta.env.BASE_URL}images/placeholders/tr_southbeach.png`, alt: "South Beach pool & mountains" },
   { vendor: "Tropitone", collection: "Radius", src: `${import.meta.env.BASE_URL}images/placeholders/tr_radius.png`, alt: "Radius mountains & ocean" },
+
+  // Arhaus (placeholder)
+  { vendor: "Arhaus", collection: "Living Room", src: `${import.meta.env.BASE_URL}images/placeholders/Arhaus_Livingroom.png`, alt: "Arhaus Living Room" },
+  { vendor: "Arhaus", collection: "Bedroom", src: `${import.meta.env.BASE_URL}images/placeholders/Arhaus_Bedroom.png`, alt: "Arhaus Bedroom" },
+  { vendor: "Arhaus", collection: "Dining Room", src: `${import.meta.env.BASE_URL}images/placeholders/Arahaus_Diningroom.png`, alt: "Arhaus Dining Room" },
 ];
 
-const vendors = ["All", "Brown Jordan", "Tropitone"] as const;
+const vendors = ["All", "Brown Jordan", "Tropitone", "Arhaus"] as const;
 const active = Astro.url.searchParams.get("vendor") ?? "All";
 const displayItems = active === "All" ? items : items.filter(i => i.vendor === active);
 ---
@@ -48,48 +53,104 @@ const displayItems = active === "All" ? items : items.filter(i => i.vendor === a
         <h1 class="text-5xl sm:text-6xl font-light text-[#1a1a1a]">Collections</h1>
         <p class="text-base sm:text-lg font-pt-mono text-[#1a1a1a] mt-3 sm:mt-4 max-w-2xl">Curated outdoor furniture, fabrics, and accessories for Baja Sur & beyond, selected to elevate your outdoor living spaces.</p>
       </div>
-    </header>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {active === "All" ? (
-        <>
-          <h2 class="text-3xl sm:text-4xl font-light col-span-full mt-12 sm:mt-16 mb-2 text-[#1a1a1a]">Brown Jordan</h2>
-          <p class="col-span-full text-base sm:text-lg font-pt-mono text-[#1a1a1a] mb-6">Manufacturing exceptional outdoor furniture since 1945, combining innovative design with superior craftsmanship.</p>
-          {items.filter(i => i.vendor === "Brown Jordan").map((it) => (
-            <figure class="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative h-full min-h-[250px]">
-              <img src={it.src} alt={it.alt} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 text-center">
-                <p class="text-xs sm:text-sm text-gray-200 tracking-wide uppercase mb-1">{it.vendor}</p>
-                <p class="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">{it.collection}</p>
-                <a class="border border-white text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md hover:bg-white hover:text-black transition-all duration-300 text-sm" href={it.vendor === "Brown Jordan" ? "https://www.brownjordan.com/lookbooks_catalog-2025" : "https://www.tropitone.com/catalogs"} target="_blank" rel="noopener">View Catalog &rarr;</a>
-              </div>
-            </figure>
+      <div class="self-start md:self-end">
+        <div class="flex flex-wrap gap-2 justify-end">
+          {vendors.map(v => (
+            <a
+              data-vendor-pill
+              data-vendor={v}
+              href={`${import.meta.env.BASE_URL}collections${v === 'All' ? '' : `?vendor=${encodeURIComponent(v)}`}`}
+              class:list={{
+                'px-3 py-1.5 rounded-full border text-sm transition-colors': true,
+                'bg-black text-white border-black': active === v,
+                'bg-white text-[#1a1a1a] border-gray-300 hover:bg-black hover:text-white': active !== v,
+              }}
+            >
+              {v}
+            </a>
           ))}
-          <h2 class="text-3xl sm:text-4xl font-light col-span-full mt-12 sm:mt-16 mb-2 text-[#1a1a1a]">Tropitone</h2>
-          <p class="col-span-full text-base sm:text-lg font-pt-mono text-[#1a1a1a] mb-6">Specializing in residential and commercial outdoor furniture, renowned for their comfort, style, and durability.</p>
-          {items.filter(i => i.vendor === "Tropitone").map((it) => (
-            <figure class="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative h-full min-h-[250px]">
+        </div>
+      </div>
+    </header>
+    
+ 
+    <div id="collections-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {["Brown Jordan", "Tropitone", "Arhaus"].map((v) => (
+        <>
+          <div data-vendor-group={v} class="col-span-full mt-12 sm:mt-16">
+            <h2 class="text-3xl sm:text-4xl font-light text-[#1a1a1a] mb-2">{v}</h2>
+            {v === "Brown Jordan" ? (
+              <p class="text-base sm:text-lg font-pt-mono text-[#1a1a1a] mb-6">Manufacturing exceptional outdoor furniture since 1945, combining innovative design with superior craftsmanship.</p>
+            ) : v === "Tropitone" ? (
+              <p class="text-base sm:text-lg font-pt-mono text-[#1a1a1a] mb-6">Specializing in residential and commercial outdoor furniture, renowned for their comfort, style, and durability.</p>
+            ) : (
+              <p class="text-base sm:text-lg font-pt-mono text-[#1a1a1a] mb-6">Step into Inspiration</p>
+            )}
+          </div>
+          {items.filter((it) => it.vendor === v).map((it) => (
+            <figure data-vendor={it.vendor} class="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative h-full min-h-[250px]">
               <img src={it.src} alt={it.alt} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
               <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 text-center">
                 <p class="text-xs sm:text-sm text-gray-200 tracking-wide uppercase mb-1">{it.vendor}</p>
                 <p class="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">{it.collection}</p>
-                <a class="border border-white text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md hover:bg-white hover:text-black transition-all duration-300 text-sm" href={it.vendor === "Brown Jordan" ? "https://www.brownjordan.com/lookbooks_catalog-2025" : "https://www.tropitone.com/catalogs"} target="_blank" rel="noopener">View Catalog &rarr;</a>
+                <a class="border border-white text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md hover:bg-white hover:text-black transition-all duration-300 text-sm" href={it.vendor === "Brown Jordan" ? "https://www.brownjordan.com/lookbooks_catalog-2025" : (it.vendor === "Tropitone" ? "https://www.tropitone.com/catalogs" : "https://www.arhaus.com/")} target="_blank" rel="noopener">View Catalog &rarr;</a>
               </div>
             </figure>
           ))}
         </>
-      ) : (
-        displayItems.map((it) => (
-          <figure class="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative h-full min-h-[250px]">
-            <img src={it.src} alt={it.alt} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-2 text-center">
-              <p class="text-xs sm:text-sm text-gray-200 tracking-wide uppercase mb-1">{it.vendor}</p>
-              <p class="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">{it.collection}</p>
-              <a class="border border-white text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md hover:bg-white hover:text-black transition-all duration-300 text-sm" href={it.vendor === "Brown Jordan" ? "https://www.brownjordan.com/lookbooks_catalog-2025" : "https://www.tropitone.com/catalogs"} target="_blank" rel="noopener">View Catalog &rarr;</a>
-            </div>
-          </figure>
-        ))
-      )}
+      ))}
     </div>
+ 
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.getElementById('collections-grid');
+        const pills = Array.from(document.querySelectorAll('[data-vendor-pill]'));
+        const groups = Array.from(grid.querySelectorAll('[data-vendor-group]'));
+ 
+        function setActive(vendor) {
+          // Update pill styles
+          pills.forEach(p => {
+            const isActive = p.getAttribute('data-vendor') === vendor || (vendor === 'All' && p.getAttribute('data-vendor') === 'All');
+            p.classList.toggle('bg-black', isActive);
+            p.classList.toggle('text-white', isActive);
+            p.classList.toggle('border-black', isActive);
+            p.classList.toggle('bg-white', !isActive);
+            p.classList.toggle('text-[#1a1a1a]', !isActive);
+            p.classList.toggle('border-gray-300', !isActive);
+          });
+          // Show/hide complete vendor groups (header + items)
+          groups.forEach(g => {
+            const gVendor = g.getAttribute('data-vendor-group');
+            const match = vendor === 'All' || gVendor === vendor;
+            // Toggle header visibility
+            g.classList.toggle('hidden', !match);
+            // Toggle all following sibling figures until next group header
+            let el = g.nextElementSibling;
+            while (el && !el.hasAttribute('data-vendor-group')) {
+              if (el.tagName.toLowerCase() === 'figure') {
+                el.classList.toggle('hidden', !match);
+              }
+              el = el.nextElementSibling;
+            }
+          });
+        }
+ 
+        // Initial vendor from URL or 'All'
+        const params = new URL(window.location.href).searchParams;
+        const initial = params.get('vendor') || 'All';
+        setActive(initial);
+ 
+        pills.forEach(p => {
+          p.addEventListener('click', (e) => {
+            e.preventDefault();
+            const vendor = p.getAttribute('data-vendor') || 'All';
+            setActive(vendor);
+            const url = new URL(window.location.href);
+            if (vendor === 'All') url.searchParams.delete('vendor'); else url.searchParams.set('vendor', vendor);
+            history.replaceState({}, '', url);
+          });
+        });
+      });
+    </script>
   </section>
 </Layout>
