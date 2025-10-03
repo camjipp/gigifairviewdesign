@@ -13,11 +13,11 @@ const { brownJordanImage, tropitoneImage, arhausImage } = Astro.props;
 <section id="furniture-lines" class="max-w-7xl mx-auto px-6 pt-16">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     {brownJordanImage && (
-      <div class="relative min-h-[350px] sm:h-[400px] md:h-[500px] overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+      <div class="relative card aspect-3/2 group">
         <img
           src={brownJordanImage}
           alt="Brown Jordan Collection Image"
-          class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-110"
+          class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-105"
           style="image-rendering: -webkit-optimize-contrast;"
         />
         <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -31,11 +31,11 @@ const { brownJordanImage, tropitoneImage, arhausImage } = Astro.props;
     )}
 
     {tropitoneImage && (
-      <div class="relative min-h-[350px] sm:h-[400px] md:h-[500px] overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+      <div class="relative card aspect-3/2 group">
         <img
           src={tropitoneImage}
           alt="Tropitone Collection Image"
-          class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-110"
+          class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-105"
           style="image-rendering: -webkit-optimize-contrast;"
         />
         <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -49,11 +49,11 @@ const { brownJordanImage, tropitoneImage, arhausImage } = Astro.props;
     )}
 
     {arhausImage && (
-      <div class="relative min-h-[350px] sm:h-[400px] md:h-[500px] overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+      <div class="relative card aspect-3/2 group">
         <img
           src={arhausImage}
           alt="Arhaus Collection Image"
-          class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-110"
+          class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-105"
           style="image-rendering: -webkit-optimize-contrast;"
         />
         <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

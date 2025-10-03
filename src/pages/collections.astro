@@ -104,9 +104,10 @@ const displayItems = active === "All" ? items : items.filter(i => i.vendor === a
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {
         const grid = document.getElementById('collections-grid');
+        if (!grid) return;
         const pills = Array.from(document.querySelectorAll('[data-vendor-pill]'));
         const groups = Array.from(grid.querySelectorAll('[data-vendor-group]'));
- 
+
         function setActive(vendor) {
           // Update pill styles
           pills.forEach(p => {
@@ -122,9 +123,7 @@ const displayItems = active === "All" ? items : items.filter(i => i.vendor === a
           groups.forEach(g => {
             const gVendor = g.getAttribute('data-vendor-group');
             const match = vendor === 'All' || gVendor === vendor;
-            // Toggle header visibility
             g.classList.toggle('hidden', !match);
-            // Toggle all following sibling figures until next group header
             let el = g.nextElementSibling;
             while (el && !el.hasAttribute('data-vendor-group')) {
               if (el.tagName.toLowerCase() === 'figure') {
@@ -134,12 +133,13 @@ const displayItems = active === "All" ? items : items.filter(i => i.vendor === a
             }
           });
         }
- 
+
         // Initial vendor from URL or 'All'
         const params = new URL(window.location.href).searchParams;
         const initial = params.get('vendor') || 'All';
         setActive(initial);
- 
+
+        // Click handlers
         pills.forEach(p => {
           p.addEventListener('click', (e) => {
             e.preventDefault();

@@ -50,23 +50,6 @@ const { aboutImage1, aboutImage2 } = Astro.props;
   </div>
 </section>
 
-<!-- Giving Hero Band -->
-<section id="giving" class="relative w-full py-24 sm:py-28">
-  <div class="absolute inset-0 -z-10">
-    <img src={aboutImage2} alt="Giving background" class="w-full h-full object-cover" style="image-rendering: -webkit-optimize-contrast;" />
-    <div class="absolute inset-0 bg-black/55"></div>
-  </div>
-  <div class="max-w-5xl mx-auto px-6 text-center text-white">
-    <p class="text-xs tracking-[.3em] uppercase mb-4 opacity-80">Giving Back</p>
-    <h2 class="text-4xl sm:text-5xl font-light leading-tight mb-6">A portion of every project supports local animal rescues</h2>
-    <p class="text-base sm:text-lg font-pt-mono opacity-90 mb-8">Animalandia • Soft Paws</p>
-    <div class="flex flex-wrap items-center justify-center gap-3">
-      <a href="https://www.facebook.com/animalandialoreto/mentions/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full border border-white/70 hover:bg-white hover:text-black transition-colors text-sm">Animalandia</a>
-      <a href="https://softpawsloreto.org/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full border border-white/70 hover:bg-white hover:text-black transition-colors text-sm">Soft Paws</a>
-    </div>
-  </div>
-</section>
-
 <!-- Process / Pricing Section -->
 <section id="process-pricing" class="max-w-7xl mx-auto px-6 py-16">
   <h2 class="text-5xl sm:text-4xl font-light text-[#1a1a1a] mb-12 text-center">Process / Pricing</h2>
@@ -129,6 +112,19 @@ const { aboutImage1, aboutImage2 } = Astro.props;
   <p class="text-lg sm:text-base text-gray-700 leading-relaxed mt-10 text-center">
     All quotes include consultations, design, furnishings, delivery, and setup.
   </p>
+</section>
+
+<!-- Giving Band (moved below Process) -->
+<section id="giving" class="w-full py-16 sm:py-20 bg-[#f7f7f7]">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <p class="text-xs tracking-[.3em] uppercase mb-3 text-gray-500">Giving Back</p>
+    <h2 class="text-3xl sm:text-4xl font-light leading-tight mb-4 text-[#1a1a1a]">A portion of every project supports local animal rescues</h2>
+    <p class="text-base sm:text-lg font-pt-mono mb-6 text-[#1a1a1a]">Animalandia • Soft Paws • Manu Palma</p>
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a href="https://www.facebook.com/animalandialoreto/mentions/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full border border-gray-300 text-[#1a1a1a] hover:bg-black hover:text-white transition-colors text-sm">Animalandia</a>
+      <a href="https://softpawsloreto.org/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full border border-gray-300 text-[#1a1a1a] hover:bg-black hover:text-white transition-colors text-sm">Soft Paws</a>
+    </div>
+  </div>
 </section>
 
 <style>
