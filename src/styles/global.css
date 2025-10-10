@@ -37,3 +37,4 @@ html {
 
 /* Utility to enforce aspect ratio when needed */
 .aspect-3\/2 { aspect-ratio: 3 / 2; }
+.aspect-4\/3 { aspect-ratio: 4 / 3; }

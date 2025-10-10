@@ -7,44 +7,37 @@ interface Props {
 const { aboutImage1, aboutImage2 } = Astro.props;
 ---
 
-<section id="about" class="max-w-7xl mx-auto px-6 py-16 text-center">
-  <h2 class="text-5xl sm:text-4xl font-light text-[#1a1a1a] mb-12">About Gigi Fairview Design</h2>
+<section id="about" class="max-w-7xl mx-auto px-6 py-20">
+  <h2 class="text-4xl sm:text-5xl md:text-6xl font-light text-[#1a1a1a] mb-12">About Gigi Fairview Design</h2>
+  <div class="h-px bg-gray-200 mb-12"></div>
 
   <div class="space-y-16 max-w-5xl mx-auto">
     <!-- Split Hero: Image Left, Copy Right -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-center">
-      <p class="about-text-block text-lg sm:text-base text-gray-700 leading-relaxed text-left font-pt-mono">
+      <p class="about-text-block text-xl sm:text-lg text-gray-700 leading-relaxed text-left max-w-[60ch]">
         Gigi Fairview Design is proud to offer outdoor furniture crafted in Juarez, Mexico and indoor furniture made in Mexico, Europe, the United States, and Indonesia. Our curated selections include exceptional outdoor and indoor furniture, fabrics, as well as exquisite accessories, all designed to elevate your living space.
       </p>
-      <div class="about-image-block relative min-h-[250px] h-80 md:h-[400px] overflow-hidden">
-        <img
-          src={aboutImage1}
-          alt="Gigi Fairview Design Image 1"
-          class="absolute inset-0 w-full h-full object-cover"
-          style="image-rendering: -webkit-optimize-contrast;"
-        />
+      <div class="about-image-block relative overflow-hidden rounded-xl border border-gray-200 shadow-sm transition-transform duration-200 hover:scale-[1.01] aspect-4/3">
+        <img src={aboutImage1} alt="Gigi Fairview Design Image 1" class="absolute inset-0 w-full h-full object-cover" style="image-rendering: -webkit-optimize-contrast;" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
       </div>
     </div>
 
     <!-- Second Row: Image Left, Text Right -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-center">
-      <div class="about-image-block relative min-h-[250px] h-80 md:h-[400px] overflow-hidden md:order-1">
-        <img
-          src={aboutImage2}
-          alt="Gigi Fairview Design Image 2"
-          class="absolute inset-0 w-full h-full object-cover"
-          style="image-rendering: -webkit-optimize-contrast;"
-        />
+      <div class="about-image-block relative overflow-hidden rounded-xl border border-gray-200 shadow-sm transition-transform duration-200 hover:scale-[1.01] aspect-4/3 md:order-1">
+        <img src={aboutImage2} alt="Gigi Fairview Design Image 2" class="absolute inset-0 w-full h-full object-cover" style="image-rendering: -webkit-optimize-contrast;" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
       </div>
-      <div id="services-section" class="about-text-block text-left md:order-2 font-pt-mono">
+      <div id="services-section" class="about-text-block text-left md:order-2 border-t border-gray-200 pt-6">
         <h3 class="text-xl sm:text-2xl font-semibold text-[#1a1a1a] mb-4">Our Services</h3>
-        <ul class="list-disc pl-5 space-y-2">
-          <li>Professional and ASID licensed design</li>
-          <li>Space planning with advanced 2D/3D software</li>
-          <li>Seamless white-glove installation with removal of all packing material</li>
-          <li>Timely delivery, with average ordering times of 6-12 weeks</li>
-          <li>Our team is bilingual and fluent in both English and Español' for our valued clientele</li>
-        </ul>
+        <div class="text-base text-gray-700 divide-y divide-gray-200">
+          <div class="py-2 flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 mt-0.5 text-[#1a1a1a]"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.07 7.1a1 1 0 0 1-1.42.007L3.29 9.95a1 1 0 1 1 1.42-1.41l3.05 3.05 6.36-6.39a1 1 0 0 1 1.584.09z" clip-rule="evenodd"/></svg><span>Professional and ASID licensed design</span></div>
+          <div class="py-2 flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 mt-0.5 text-[#1a1a1a]"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.07 7.1a1 1 0 0 1-1.42.007L3.29 9.95a1 1 0 1 1 1.42-1.41l3.05 3.05 6.36-6.39a1 1 0 0 1 1.584.09z" clip-rule="evenodd"/></svg><span>Space planning with advanced 2D/3D software</span></div>
+          <div class="py-2 flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 mt-0.5 text-[#1a1a1a]"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.07 7.1a1 1 0 0 1-1.42.007L3.29 9.95a1 1 0 1 1 1.42-1.41l3.05 3.05 6.36-6.39a1 1 0 0 1 1.584.09z" clip-rule="evenodd"/></svg><span>Seamless white-glove installation with removal of all packing material</span></div>
+          <div class="py-2 flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 mt-0.5 text-[#1a1a1a]"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.07 7.1a1 1 0 0 1-1.42.007L3.29 9.95a1 1 0 1 1 1.42-1.41l3.05 3.05 6.36-6.39a1 1 0 0 1 1.584.09z" clip-rule="evenodd"/></svg><span>Timely delivery, with average ordering times of 6–12 weeks</span></div>
+          <div class="py-2 flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 mt-0.5 text-[#1a1a1a]"><path fill-rule="evenodd" d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.07 7.1a1 1 0 0 1-1.42.007L3.29 9.95a1 1 0 1 1 1.42-1.41l3.05 3.05 6.36-6.39a1 1 0 0 1 1.584.09z" clip-rule="evenodd"/></svg><span>Our team is bilingual and fluent in both English and Español'</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -52,66 +45,45 @@ const { aboutImage1, aboutImage2 } = Astro.props;
 
 <!-- Process / Pricing Section -->
 <section id="process-pricing" class="max-w-7xl mx-auto px-6 py-16">
-  <h2 class="text-5xl sm:text-4xl font-light text-[#1a1a1a] mb-12 text-center">Process / Pricing</h2>
-
-  <!-- Desktop: Horizontal timeline -->
-  <div class="hidden md:block">
-    <div class="relative mx-auto max-w-5xl pt-10">
-      <div class="absolute inset-x-0 top-5 h-px bg-gray-200"></div>
-      <ul class="grid grid-cols-5 gap-6">
-        <li class="flex flex-col items-center">
-          <span class="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black text-white text-sm">1</span>
-          <div class="mt-4 text-center">
-            <h3 class="text-base font-semibold text-[#1a1a1a]">Step One</h3>
-            <p class="text-sm text-gray-700 max-w-[14rem]">Contact Gigi Fairview Design • Complete Design Project Questionnaire</p>
-          </div>
-        </li>
-        <li class="flex flex-col items-center">
-          <span class="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black text-white text-sm">2</span>
-          <div class="mt-4 text-center">
-            <h3 class="text-base font-semibold text-[#1a1a1a]">Step Two</h3>
-            <p class="text-sm text-gray-700 max-w-[14rem]">Measurement Appointment • Initial Design Consultation</p>
-          </div>
-        </li>
-        <li class="flex flex-col items-center">
-          <span class="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black text-white text-sm">3</span>
-          <div class="mt-4 text-center">
-            <h3 class="text-base font-semibold text-[#1a1a1a]">Step Three</h3>
-            <p class="text-sm text-gray-700 max-w-[14rem]">2D Design • Presentation</p>
-          </div>
-        </li>
-        <li class="flex flex-col items-center">
-          <span class="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black text-white text-sm">4</span>
-          <div class="mt-4 text-center">
-            <h3 class="text-base font-semibold text-[#1a1a1a]">Step Four</h3>
-            <p class="text-sm text-gray-700 max-w-[14rem]">Final Consultation • 3D Design • Initial Payment</p>
-          </div>
-        </li>
-        <li class="flex flex-col items-center">
-          <span class="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black text-white text-sm">5</span>
-          <div class="mt-4 text-center">
-            <h3 class="text-base font-semibold text-[#1a1a1a]">Step Five</h3>
-            <p class="text-sm text-gray-700 max-w-[14rem]">Delivery • Final Payment</p>
-          </div>
-        </li>
-      </ul>
+  <h2 class="text-5xl sm:text-4xl font-light text-[#1a1a1a] mb-4 text-center">Process / Pricing</h2>
+  <p class="text-xs tracking-[.3em] uppercase text-gray-500 text-center mb-2">Our Process</p>
+  <p class="text-sm text-gray-600 text-center mb-10">Average lead time: 6–12 weeks</p>
+  <div class="relative">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div class="card p-6 text-center">
+        <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-black text-white text-xs">1</div>
+        <h3 class="mt-4 text-lg sm:text-xl font-semibold text-[#1a1a1a]">Contact & Questionnaire</h3>
+        <p class="mt-1 text-sm text-gray-700">Connect with us and complete your project brief.</p>
+      </div>
+      <div class="card p-6 text-center">
+        <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-black text-white text-xs">2</div>
+        <h3 class="mt-4 text-lg sm:text-xl font-semibold text-[#1a1a1a]">Measure & Consult</h3>
+        <p class="mt-1 text-sm text-gray-700">On‑site measurements and initial consultation.</p>
+      </div>
+      <div class="card p-6 text-center">
+        <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-black text-white text-xs">3</div>
+        <h3 class="mt-4 text-lg sm:text-xl font-semibold text-[#1a1a1a]">2D Design & Presentation</h3>
+        <p class="mt-1 text-sm text-gray-700">Layout planning and concept presentation.</p>
+      </div>
+      <div class="card p-6 text-center">
+        <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-black text-white text-xs">4</div>
+        <h3 class="mt-4 text-lg sm:text-xl font-semibold text-[#1a1a1a]">Finalize & 3D</h3>
+        <p class="mt-1 text-sm text-gray-700">Final consultation, 3D, and initial payment.</p>
+      </div>
+      <div class="card p-6 text-center">
+        <div class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-black text-white text-xs">5</div>
+        <h3 class="mt-4 text-lg sm:text-xl font-semibold text-[#1a1a1a]">Delivery & Setup</h3>
+        <p class="mt-1 text-sm text-gray-700">White‑glove delivery and final payment.</p>
+      </div>
     </div>
-  </div>
-
-  <!-- Mobile: Vertical list -->
-  <div class="md:hidden max-w-4xl mx-auto text-left">
-    <ol class="relative border-s border-gray-200 pl-6">
-      <li class="mb-10 ms-6"><span class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-black text-white text-xs">1</span><h3 class="text-base font-semibold text-[#1a1a1a]">Step One</h3><p class="text-sm text-gray-700">Contact Gigi Fairview Design • Complete Design Project Questionnaire</p></li>
-      <li class="mb-10 ms-6"><span class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-black text-white text-xs">2</span><h3 class="text-base font-semibold text-[#1a1a1a]">Step Two</h3><p class="text-sm text-gray-700">Measurement Appointment • Initial Design Consultation</p></li>
-      <li class="mb-10 ms-6"><span class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-black text-white text-xs">3</span><h3 class="text-base font-semibold text-[#1a1a1a]">Step Three</h3><p class="text-sm text-gray-700">2D Design • Presentation</p></li>
-      <li class="mb-10 ms-6"><span class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-black text-white text-xs">4</span><h3 class="text-base font-semibold text-[#1a1a1a]">Step Four</h3><p class="text-sm text-gray-700">Final Consultation • 3D Design • Initial Payment</p></li>
-      <li class="ms-6"><span class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-black text-white text-xs">5</span><h3 class="text-base font-semibold text-[#1a1a1a]">Step Five</h3><p class="text-sm text-gray-700">Delivery • Final Payment</p></li>
-    </ol>
   </div>
 
   <p class="text-lg sm:text-base text-gray-700 leading-relaxed mt-10 text-center">
     All quotes include consultations, design, furnishings, delivery, and setup.
   </p>
+  <div class="text-center mt-6">
+    <a href={`${import.meta.env.BASE_URL}contact`} class="inline-flex items-center gap-2 px-5 py-3 border border-black text-black hover:bg-black hover:text-white transition-colors">Book a consultation <span class="transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+  </div>
 </section>
 
 <!-- Giving Band (moved below Process) -->
@@ -126,100 +98,3 @@ const { aboutImage1, aboutImage2 } = Astro.props;
     </div>
   </div>
 </section>
-
-<style>
-  #process-steps .wheel-step {
-    position: absolute;
-    width: 42px; height: 42px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 9999px;
-    background: white; color: #111; border: 1px solid #e5e7eb;
-    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  }
-  #process-steps .wheel-step.active { background: #111; color: #fff; border-color: #111; }
-  @media (prefers-reduced-motion: reduce) {
-    #process-progress { transition: none !important; }
-    #process-steps .wheel-step { transition: none !important; }
-  }
-  .about-text-block.active,
-  .about-image-block.active {
-    opacity: 1;
-    transform: translateX(0) translateY(0);
-  }
-</style>
-
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const progress = document.getElementById('process-progress');
-    const ring = document.getElementById('process-ring');
-    const steps = Array.from(document.querySelectorAll('#process-steps .wheel-step'));
-    const details = Array.from(document.querySelectorAll('#process-details .process-detail'));
-    if (!progress || !ring || steps.length === 0) return;
-
-    const R = 150; // radius to edge of stroke
-    const center = { x: 170, y: 170 };
-    const circumference = 2 * Math.PI * R;
-    const total = steps.length;
-    progress.style.strokeDasharray = String(circumference);
-    progress.style.strokeDashoffset = String(circumference);
-
-    // Position markers around the circle
-    steps.forEach((el, i) => {
-      const angle = (-90 + (360 / total) * i) * (Math.PI / 180); // start at top
-      const r = R; // marker orbit radius
-      const x = center.x + r * Math.cos(angle);
-      const y = center.y + r * Math.sin(angle);
-      const host = el.parentElement; // absolute container sized like SVG
-      if (!host) return;
-      // Convert SVG coords to host absolute coords (they overlap in size)
-      el.style.left = `${x - 21}px`;
-      el.style.top = `${y - 21}px`;
-    });
-
-    function setActive(index) {
-      steps.forEach((s, i) => s.classList.toggle('active', i === index));
-      details.forEach((d, i) => d.classList.toggle('hidden', i !== index));
-      const portion = (index + 1) / total; // progress through steps
-      const offset = circumference * (1 - portion);
-      progress.style.transition = 'stroke-dashoffset .6s ease';
-      progress.style.strokeDashoffset = String(offset);
-    }
-
-    // Default to first step
-    setActive(0);
-
-    steps.forEach((btn, i) => {
-      btn.addEventListener('click', () => setActive(i));
-    });
-
-    // Animate in on intersect
-    const wheelSection = document.getElementById('process-pricing');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActive(0);
-        }
-      });
-    }, { threshold: .3 });
-    if (wheelSection) io.observe(wheelSection);
-
-    const targets = document.querySelectorAll('.about-text-block, .about-image-block');
-    if (targets.length === 0) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    targets.forEach((el) => observer.observe(el));
-
-    // Fallback: ensure visible after short delay
-    setTimeout(() => {
-      targets.forEach((el) => el.classList.add('active'));
-    }, 300);
-  });
-</script>
