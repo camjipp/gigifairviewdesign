@@ -1,11 +1,11 @@
 ---
+const BASE_URL = import.meta.env.BASE_URL;
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/collections", label: "Collections" },
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/reviews", label: "Reviews" },
-  { href: "/contact", label: "Contact" },
+  { href: `${BASE_URL}`, label: "Home" },
+  { href: `${BASE_URL}collections`, label: "Collections" },
+  { href: `${BASE_URL}#about`, label: "About" },
+  { href: `${BASE_URL}#testimonials`, label: "Reviews" },
+  { href: `${BASE_URL}contact`, label: "Contact" },
 ];
 ---
 
