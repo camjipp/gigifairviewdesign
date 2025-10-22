@@ -4,6 +4,9 @@ import FurnitureLines from '../components/FurnitureLines.astro';
 import About from '../components/About.astro';
 import Testimonials from '../components/Testimonials.astro';
 
+const pageTitle = "Gigi Fairview Design — Outdoor & Indoor Furniture in Loreto, Baja Sur";
+const pageDescription = "Celebrating 25 years of design excellence in Loreto. ASID-licensed interior design, 2D/3D planning, white-glove installation. Brown Jordan, Tropitone, and Arhaus collections. Outdoor & indoor furniture crafted in Mexico, Europe, and the USA.";
+
 const allPlaceholderImages = [
   `${import.meta.env.BASE_URL}images/placeholders/bj_adapt.png`,
   `${import.meta.env.BASE_URL}images/placeholders/bj_atlas.png`,
@@ -39,7 +42,7 @@ const arhausHomepageImg = `${import.meta.env.BASE_URL}images/placeholders/Arhaus
 const [aboutImg1, aboutImg2] = getUniqueRandomImages(2);
 ---
 
-<Layout title="Gigi Fairview Design">
+<Layout title={pageTitle} description={pageDescription}>
 	<section class="relative z-20 max-w-7xl mx-auto px-6 pt-12 md:pt-16 py-0 flex flex-col md:flex-row items-end justify-between">
 		<h1 class="text-left flex flex-col items-start font-light text-[#1a1a1a] mb-0 leading-none">
 			<span class="block text-5xl sm:text-4xl">Gigi</span>
