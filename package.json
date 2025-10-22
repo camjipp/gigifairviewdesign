@@ -8,8 +8,11 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "engines": { "node": ">=18.17" },
+  "engines": {
+    "node": ">=18.17"
+  },
   "dependencies": {
+    "@astrojs/vercel": "^8.2.11",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.7",
     "tailwindcss": "^4.1.13"

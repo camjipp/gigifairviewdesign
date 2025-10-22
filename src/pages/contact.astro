@@ -4,11 +4,15 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Contact — Gigi FairView Design">
   <section class="max-w-2xl mx-auto px-6 py-12">
     <h1 class="text-3xl font-semibold mb-6">Request a Quote</h1>
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5">
-      <input type="hidden" name="form-name" value="contact" />
-      <p class="hidden">
-        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-      </p>
+    <form id="contact-form" class="space-y-5">
+      <div>
+        <label class="block text-sm mb-1">Customer Type</label>
+        <select name="customer_type" required class="w-full border border-gray-300 rounded-md px-3 py-2">
+          <option value="">Select...</option>
+          <option value="new">New Customer</option>
+          <option value="returning">Established Customer</option>
+        </select>
+      </div>
       <div>
         <label class="block text-sm mb-1">Name</label>
         <input name="name" required class="w-full border border-gray-300 rounded-md px-3 py-2" />
@@ -31,8 +35,46 @@ import Layout from "../layouts/Layout.astro";
         <label class="block text-sm mb-1">Message</label>
         <textarea name="message" rows="5" class="w-full border border-gray-300 rounded-md px-3 py-2"></textarea>
       </div>
-      <button class="px-5 py-2 bg-black text-white rounded-md hover:bg-gray-800">Send</button>
+      <button type="submit" class="px-5 py-2 bg-black text-white rounded-md hover:bg-gray-800 disabled:opacity-50">Send</button>
+      <p id="form-status" class="text-sm"></p>
     </form>
-    <p class="text-sm text-gray-500 mt-4">Prefer email? Reach us at design@gigifairviewdesign.com (coming soon).</p>
+    <p class="text-sm text-gray-500 mt-4">Prefer email? Reach us at hello@gigifairviewdesign.com or design@gigifairviewdesign.com</p>
   </section>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const status = document.getElementById('form-status') as HTMLParagraphElement;
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      button.disabled = true;
+      status.textContent = 'Sending...';
+      status.className = 'text-sm text-gray-600';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          status.textContent = 'Thank you! We will be in touch soon.';
+          status.className = 'text-sm text-green-600';
+          form.reset();
+        } else {
+          throw new Error(result.message);
+        }
+      } catch (error) {
+        status.textContent = 'Failed to send. Please email us directly.';
+        status.className = 'text-sm text-red-600';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
 </Layout>
