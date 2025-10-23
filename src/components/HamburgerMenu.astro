@@ -8,23 +8,24 @@ const { links } = Astro.props;
 ---
 
 <div class="md:hidden">
-  <button id="hamburger-button" class="focus:outline-none">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <button id="hamburger-button" class="focus:outline-none z-50 relative">
+    <svg class="w-6 h-6 text-[#1a1a1a]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
     </svg>
   </button>
 
-  <div id="mobile-menu" class="fixed inset-0 bg-white hidden overflow-y-auto" style="z-index: 10000;">
-    <button id="close-menu" aria-label="Close menu" class="absolute top-4 right-4 p-2 text-[#1a1a1a] focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
-    <div class="flex flex-col items-center justify-center h-full">
-      <ul class="flex flex-col items-center gap-8 text-[#1a1a1a]">
-        {links.map(l => <li><a class="text-2xl font-semibold text-[#1a1a1a] hover:text-[var(--color-accent-blue)] transition-colors duration-300" href={l.href}>{l.label}</a></li>)}
+  <div id="mobile-menu" class="fixed left-0 right-0 bg-white shadow-lg hidden overflow-y-auto transition-all duration-300" style="top: 56px; z-index: 9999; max-height: calc(100vh - 56px);">
+    <nav class="py-8 px-6">
+      <ul class="flex flex-col gap-6">
+        {links.map(l => (
+          <li class="border-b border-gray-100 pb-4 last:border-b-0">
+            <a class="text-xl font-medium text-[#1a1a1a] hover:text-[var(--color-accent-blue)] transition-colors duration-300 block" href={l.href}>
+              {l.label}
+            </a>
+          </li>
+        ))}
       </ul>
-    </div>
+    </nav>
   </div>
 </div>
 
@@ -33,56 +34,41 @@ const { links } = Astro.props;
     const hamburgerButton = document.getElementById('hamburger-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const hamburgerIcon = document.getElementById('hamburger-icon');
-    const closeButton = document.getElementById('close-menu');
  
-    hamburgerButton.addEventListener('click', () => {
-      const willOpen = mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden');
- 
-      // Toggle hamburger icon
-      if (!willOpen) {
-        hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
-      } else {
-        hamburgerIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // Close icon
-      }
+    if (!hamburgerButton || !mobileMenu || !hamburgerIcon) return;
 
-      // Lock/unlock body scroll
-      document.body.classList.toggle('overflow-hidden', willOpen === true);
-    });
- 
-    if (closeButton) {
-      closeButton.addEventListener('click', () => {
+    hamburgerButton.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      
+      if (isHidden) {
+        // Open menu
+        mobileMenu.classList.remove('hidden');
+        hamburgerIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
+      } else {
+        // Close menu
         mobileMenu.classList.add('hidden');
-        // Reset to hamburger icon
-        hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-        document.body.classList.remove('overflow-hidden');
-      });
-    }
+        hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
+      }
+    });
 
     // Close menu when a link is clicked
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        // Check if the link is an anchor link to the current page
-        // We consider it an anchor link if its href includes '#' AND its path matches the current window's path
-        const isAnchorLink = link.href.includes('#') && new URL(link.href).pathname === window.location.pathname;
-
-        if (isAnchorLink) {
-          // For anchor links, close the menu after a short delay to allow smooth scrolling
-          setTimeout(() => {
-            mobileMenu.classList.add('hidden');
-            hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Reset to hamburger icon
-            document.body.classList.remove('overflow-hidden');
-          }, 200); // 200ms delay
-        } else {
-          // For regular navigation links, close immediately
-          mobileMenu.classList.add('hidden');
-          hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Reset to hamburger icon
-          document.body.classList.remove('overflow-hidden');
-        }
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
       });
     });
-  });
 
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.classList.contains('hidden') && 
+          !mobileMenu.contains(e.target) && 
+          !hamburgerButton.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      }
+    });
+  });
 </script>
 
 <style>
