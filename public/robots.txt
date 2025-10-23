@@ -1,0 +1,10 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Block API routes from being crawled
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.gigifairviewdesign.com/sitemap-index.xml
+
