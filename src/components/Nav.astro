@@ -9,9 +9,9 @@ const links = [
   { href: `${BASE_URL}contact`, label: "Contact" },
 ];
 ---
-<nav class="w-full border-b border-gray-200 bg-white/80 fixed top-0 z-50 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-    <a href={BASE_URL} class="font-bold tracking-tight site-title text-2xl text-[#1a1a1a]">GigiFairView Design</a>
+<nav class="w-full border-b border-gray-200 bg-white/80 fixed top-0 backdrop-blur-md" style="z-index: 100;">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
+    <a href={BASE_URL} class="font-bold tracking-tight site-title text-lg md:text-2xl text-[#1a1a1a]">GigiFairView Design</a>
     <ul class="hidden md:flex gap-8 text-base text-[#333]">
       {links.map(l => (
         <li><a class="font-normal hover:font-semibold transition-all duration-300 hover:text-[var(--color-accent-blue)]" href={l.href}>{l.label}</a></li>

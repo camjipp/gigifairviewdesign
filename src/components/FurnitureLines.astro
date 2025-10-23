@@ -10,8 +10,8 @@ interface Props {
 const { brownJordanImage, tropitoneImage, arhausImage } = Astro.props;
 ---
 
-<section id="furniture-lines" class="max-w-7xl mx-auto px-6 pt-16">
-  <div class="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+<section id="furniture-lines" class="max-w-7xl mx-auto px-6 pt-8 md:pt-16">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
     {brownJordanImage && (
       <div class="relative card aspect-square group">
         <img
@@ -20,10 +20,10 @@ const { brownJordanImage, tropitoneImage, arhausImage } = Astro.props;
           class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-105"
           style="image-rendering: -webkit-optimize-contrast;"
         />
-        <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <p class="text-sm tracking-widest uppercase mb-2">Our Collection</p>
-          <h3 class="text-3xl sm:text-4xl font-bold mb-6">Brown Jordan</h3>
-          <a href={`${import.meta.env.BASE_URL}collections?vendor=Brown%20Jordan`} class="inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 border-2 border-white text-white text-base sm:text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
+        <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-4 md:p-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          <p class="text-xs md:text-sm tracking-widest uppercase mb-2">Our Collection</p>
+          <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">Brown Jordan</h3>
+          <a href={`${import.meta.env.BASE_URL}collections?vendor=Brown%20Jordan`} class="inline-flex items-center gap-2 px-4 py-2 md:px-8 md:py-4 border-2 border-white text-white text-sm md:text-base lg:text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
             <span>Go to the Collection</span>
             <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
           </a>
@@ -39,10 +39,10 @@ const { brownJordanImage, tropitoneImage, arhausImage } = Astro.props;
           class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-105"
           style="image-rendering: -webkit-optimize-contrast;"
         />
-        <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <p class="text-sm tracking-widest uppercase mb-2">Our Collection</p>
-          <h3 class="text-3xl sm:text-4xl font-bold mb-6">Tropitone</h3>
-          <a href={`${import.meta.env.BASE_URL}collections?vendor=Tropitone`} class="inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 border-2 border-white text-white text-base sm:text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
+        <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-4 md:p-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          <p class="text-xs md:text-sm tracking-widest uppercase mb-2">Our Collection</p>
+          <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">Tropitone</h3>
+          <a href={`${import.meta.env.BASE_URL}collections?vendor=Tropitone`} class="inline-flex items-center gap-2 px-4 py-2 md:px-8 md:py-4 border-2 border-white text-white text-sm md:text-base lg:text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
             <span>Go to the Collection</span>
             <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
           </a>
@@ -58,10 +58,10 @@ const { brownJordanImage, tropitoneImage, arhausImage } = Astro.props;
           class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-500 group-hover:scale-105"
           style="image-rendering: -webkit-optimize-contrast;"
         />
-        <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <p class="text-sm tracking-widest uppercase mb-2">Our Collection</p>
-          <h3 class="text-3xl sm:text-4xl font-bold mb-6">Arhaus</h3>
-          <a href={`${import.meta.env.BASE_URL}collections?vendor=Arhaus`} class="inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 border-2 border-white text-white text-base sm:text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
+        <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white p-4 md:p-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          <p class="text-xs md:text-sm tracking-widest uppercase mb-2">Our Collection</p>
+          <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">Arhaus</h3>
+          <a href={`${import.meta.env.BASE_URL}collections?vendor=Arhaus`} class="inline-flex items-center gap-2 px-4 py-2 md:px-8 md:py-4 border-2 border-white text-white text-sm md:text-base lg:text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
             <span>Go to the Collection</span>
             <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
           </a>
