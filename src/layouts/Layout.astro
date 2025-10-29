@@ -10,7 +10,7 @@ interface Props {
 
 const { 
   title = "Gigi Fairview Design — Outdoor & Indoor Furniture in Loreto, Baja Sur",
-  description = "25 years of design excellence in Loreto. ASID-licensed interior design, 2D/3D planning, white-glove installation. Brown Jordan, Tropitone, Arhaus. Outdoor & indoor furniture crafted in Mexico, Europe, and the USA.",
+  description = "25 years of design excellence in Loreto. ASID-licensed interior design, 2-D/3-D planning, white-glove installation. Brown Jordan, Tropitone, Arhaus. Outdoor & indoor furniture crafted in Mexico, Europe, and the USA.",
   image = "/images/placeholders/bj_adapt.png"
 } = Astro.props;
 
@@ -48,11 +48,11 @@ import "../styles/global.css"; // Import Tailwind CSS base styles
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=PT+Mono&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=PT+Mono&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<Nav />
-		<div class="bg-[#8a7f72] text-white text-center py-2 text-xs md:text-sm font-semibold tracking-wide mt-14">
+		<div class="bg-[rgb(88,88,88)] text-white text-center py-2 text-base md:text-lg mt-14" style="font-family: 'Dancing Script', cursive;">
 			Celebrating our 25th Anniversary in Design
 		</div>
 		<main class="min-h-[70vh] animate-fade-in"><slot /></main>
