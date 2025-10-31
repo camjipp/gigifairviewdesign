@@ -1,9 +1,8 @@
 ---
 const BASE_URL = import.meta.env.BASE_URL;
 const links = [
-  { href: `${BASE_URL}`, label: "Home" },
+  { href: `${BASE_URL}`, label: "About" },
   { href: `${BASE_URL}collections`, label: "Collections" },
-  { href: `${BASE_URL}#about`, label: "About" },
   { href: `${BASE_URL}#testimonials`, label: "Reviews" },
   { href: `${BASE_URL}contact`, label: "Contact" },
 ];
@@ -20,7 +19,7 @@ const links = [
       <ul class="flex flex-wrap justify-center md:justify-end gap-x-6 md:gap-x-8 gap-y-3 md:gap-y-4 text-sm md:text-base">
         {links.map((l: { href: string; label: string }) => (
           <li>
-            <a class="hover:text-gray-300 transition-colors duration-300" href={l.href}>{l.label}</a>
+            <a class="font-semibold hover:text-gray-300 transition-colors duration-300" href={l.href}>{l.label}</a>
           </li>
         ))}
       </ul>
